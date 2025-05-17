@@ -6,78 +6,111 @@
   <title>Finals Lab Task 6 - MongoDB Operations</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
+      padding: 0;
       font-family: 'Share Tech Mono', monospace;
-      background-color: #000;
+      background: linear-gradient(135deg, #000000, #0f0f0f);
       color: #00f0ff;
+      overflow-x: hidden;
+    }
+
+    .floating-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
       padding: 40px 20px;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      background: rgba(0, 0, 0, 0.9);
+    .floating-box {
+      max-width: 950px;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(16px);
       border: 2px solid #00f0ff;
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.4),
+                  0 0 60px rgba(0, 240, 255, 0.2) inset;
+      border-radius: 20px;
       padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 0 50px rgba(0, 240, 255, 0.5);
+      margin: 30px 0;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
     h1 {
-      text-align: center;
       font-size: 3em;
-      margin-bottom: 30px;
+      text-align: center;
       color: #00f0ff;
-      border-bottom: 2px solid #00f0ff;
-      padding-bottom: 10px;
+      margin-bottom: 20px;
+      text-shadow: 0 0 5px #00f0ff;
     }
 
     h2, h3 {
-      margin-top: 25px;
       color: #ff3c57;
+      margin-top: 30px;
+      text-shadow: 0 0 3px #ff3c57;
     }
 
     p, li {
       font-size: 1.1em;
+      line-height: 1.6em;
     }
 
     ul {
-      margin-left: 20px;
-      margin-top: 10px;
+      margin-left: 25px;
+    }
+
+    ol {
+      padding-left: 20px;
     }
 
     img {
       width: 100%;
       max-width: 800px;
-      border-radius: 10px;
       margin: 20px 0;
+      border-radius: 10px;
       box-shadow: 0 0 15px #00f0ff;
+    }
+
+    audio {
+      margin-top: 10px;
+      display: block;
+    }
+
+    .system-btn, #toggle-audio {
+      padding: 12px 30px;
+      margin: 10px;
+      background: transparent;
+      border: 2px solid #00f0ff;
+      color: #00f0ff;
+      font-size: 1.1rem;
+      font-family: inherit;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      text-decoration: none;
+    }
+
+    .system-btn:hover, #toggle-audio:hover {
+      background-color: #00f0ff;
+      color: #000;
+      box-shadow: 0 0 20px #00f0ff;
     }
 
     .button-row {
       display: flex;
       justify-content: center;
-      gap: 20px;
-      margin-top: 30px;
       flex-wrap: wrap;
-    }
-
-    .system-btn {
-      padding: 12px 30px;
-      background: transparent;
-      border: 2px solid #00f0ff;
-      color: #00f0ff;
-      font-size: 1.2rem;
-      border-radius: 6px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: 0.3s ease;
-    }
-
-    .system-btn:hover {
-      background-color: #00f0ff;
-      color: black;
+      margin-top: 30px;
     }
 
     @media (max-width: 600px) {
@@ -85,96 +118,98 @@
         font-size: 2em;
       }
 
-      .container {
+      .floating-box {
         padding: 20px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Finals Lab Task 6</h1>
-    <p>This task focuses on performing fundamental MongoDB operations such as creating a database, inserting documents, and executing find, update, search, and delete actions within a collection.</p>
+  <div class="floating-container">
+    <div class="floating-box">
+      <h1>Finals Lab Task 6</h1>
+      <p>This task focuses on performing fundamental MongoDB operations such as creating a database, inserting documents, and executing find, update, search, and delete actions within a collection.</p>
 
-    <h2>Step-by-Step Process:</h2>
-    <ol>
-      <li><strong>Create a Database</strong>
-        <ul>
-          <li>Begin by generating or selecting a desired database.</li>
-          <li>This chosen database serves as the main environment for the next operations.</li>
-        </ul>
-      </li>
-      <li><strong>Insert Documents</strong>
-        <ul>
-          <li>A collection is established within the active database.</li>
-          <li>Several documents are added, each holding organized information like name, age, or address.</li>
-        </ul>
-      </li>
-      <li><strong>FIND Documents</strong>
-        <ul>
-          <li>Show all existing documents within the collection.</li>
-          <li>Apply filters to retrieve specific documents using criteria such as name or ID.</li>
-        </ul>
-      </li>
-      <li><strong>UPDATE Documents</strong>
-        <ul>
-          <li>Find the document to be updated based on a given condition (e.g., name or ID).</li>
-          <li>Indicate the field(s) to modify and execute the update.</li>
-          <li>Validate the change by reviewing the document again.</li>
-        </ul>
-      </li>
-      <li><strong>SEARCH Documents</strong>
-        <ul>
-          <li>Define particular criteria to search for documents meeting set conditions.</li>
-          <li>Check the returned documents to ensure they match the search requirements.</li>
-        </ul>
-      </li>
-      <li><strong>DELETE Documents</strong>
-        <ul>
-          <li>Identify the document(s) to be removed using a condition.</li>
-          <li>Remove the document(s) from the collection.</li>
-          <li>Verify deletion by checking the collection contents.</li>
-        </ul>
-      </li>
-    </ol>
+      <h2>Step-by-Step Process:</h2>
+      <ol>
+        <li><strong>Create a Database</strong>
+          <ul>
+            <li>Generate or select a desired database.</li>
+            <li>This chosen database serves as the main environment for the next operations.</li>
+          </ul>
+        </li>
+        <li><strong>Insert Documents</strong>
+          <ul>
+            <li>A collection is established within the active database.</li>
+            <li>Several documents are added, each holding organized information like name, age, or address.</li>
+          </ul>
+        </li>
+        <li><strong>FIND Documents</strong>
+          <ul>
+            <li>Show all existing documents within the collection.</li>
+            <li>Apply filters to retrieve specific documents using criteria such as name or ID.</li>
+          </ul>
+        </li>
+        <li><strong>UPDATE Documents</strong>
+          <ul>
+            <li>Find the document to be updated based on a condition.</li>
+            <li>Indicate the field(s) to modify and execute the update.</li>
+            <li>Validate the change by reviewing the document again.</li>
+          </ul>
+        </li>
+        <li><strong>SEARCH Documents</strong>
+          <ul>
+            <li>Define criteria to search for documents meeting set conditions.</li>
+            <li>Check the returned documents to ensure accuracy.</li>
+          </ul>
+        </li>
+        <li><strong>DELETE Documents</strong>
+          <ul>
+            <li>Identify document(s) to be removed using a condition.</li>
+            <li>Remove the document(s) from the collection.</li>
+            <li>Verify deletion by checking the contents again.</li>
+          </ul>
+        </li>
+      </ol>
 
-    <h2>Screenshots / Queries:</h2>
-    <h3>1. Create & Insert</h3>
-    <img src="https://github.com/user-attachments/assets/163666b9-3b1b-47c7-aee8-2f565ce80aaa" alt="Insert Code 1">
-    <img src="https://github.com/user-attachments/assets/211f545a-442a-472d-8216-9193d92eb787" alt="Insert Code 2">
+      <h2>Screenshots / Queries:</h2>
+      <h3>1. Create & Insert</h3>
+      <img src="https://github.com/user-attachments/assets/163666b9-3b1b-47c7-aee8-2f565ce80aaa" alt="Insert Code 1">
+      <img src="https://github.com/user-attachments/assets/211f545a-442a-472d-8216-9193d92eb787" alt="Insert Code 2">
 
-    <h3>2. View All Documents</h3>
-    <img src="https://github.com/user-attachments/assets/0461da5d-a8a5-4062-95ad-9176877d8844" alt="View All">
+      <h3>2. View All Documents</h3>
+      <img src="https://github.com/user-attachments/assets/0461da5d-a8a5-4062-95ad-9176877d8844" alt="View All">
 
-    <h3>3. Filter Specific Document</h3>
-    <img src="https://github.com/user-attachments/assets/9c459131-1017-41eb-8ea3-bd2c9af38e2b" alt="Find One">
+      <h3>3. Filter Specific Document</h3>
+      <img src="https://github.com/user-attachments/assets/9c459131-1017-41eb-8ea3-bd2c9af38e2b" alt="Find One">
 
-    <h3>4. Update Document</h3>
-    <img src="https://github.com/user-attachments/assets/326d35d4-3b26-4324-9877-c33fa930429a" alt="Update Code">
-    <img src="https://github.com/user-attachments/assets/f2228f49-0d11-46af-93de-b9f2b8450d09" alt="Update Result">
+      <h3>4. Update Document</h3>
+      <img src="https://github.com/user-attachments/assets/326d35d4-3b26-4324-9877-c33fa930429a" alt="Update Code">
+      <img src="https://github.com/user-attachments/assets/f2228f49-0d11-46af-93de-b9f2b8450d09" alt="Update Result">
 
-    <h3>5. Search (Filter)</h3>
-    <img src="https://github.com/user-attachments/assets/e1b07f99-71dd-4aa9-8252-62a4c008f5e7" alt="Search">
-    <img src="https://github.com/user-attachments/assets/0e6c60dd-f4a1-41bb-b144-4e4671ebc8c1" alt="Search 1">
-    <img src="https://github.com/user-attachments/assets/6fdc5c6a-dd5c-4495-b394-a8f990a2a9c6" alt="Search 2">
-    <img src="https://github.com/user-attachments/assets/032b9b75-081b-43d4-9938-2168185e511d" alt="Search 3">
-    <img src="https://github.com/user-attachments/assets/52bbe888-1a1e-4371-8bce-210d6c93b55e" alt="Search 4">
-    <img src="https://github.com/user-attachments/assets/4036d3f7-bc08-4637-8bef-41b332eb7bd4" alt="Search 5">
+      <h3>5. Search (Filter)</h3>
+      <img src="https://github.com/user-attachments/assets/e1b07f99-71dd-4aa9-8252-62a4c008f5e7" alt="Search">
+      <img src="https://github.com/user-attachments/assets/0e6c60dd-f4a1-41bb-b144-4e4671ebc8c1" alt="Search 1">
+      <img src="https://github.com/user-attachments/assets/6fdc5c6a-dd5c-4495-b394-a8f990a2a9c6" alt="Search 2">
+      <img src="https://github.com/user-attachments/assets/032b9b75-081b-43d4-9938-2168185e511d" alt="Search 3">
+      <img src="https://github.com/user-attachments/assets/52bbe888-1a1e-4371-8bce-210d6c93b55e" alt="Search 4">
+      <img src="https://github.com/user-attachments/assets/4036d3f7-bc08-4637-8bef-41b332eb7bd4" alt="Search 5">
 
-    <h3>6. Delete</h3>
-    <img src="https://github.com/user-attachments/assets/0c4e428a-2e66-48e7-a98a-c11b3d66b27e" alt="Delete Code">
-    <img src="https://github.com/user-attachments/assets/d01d8798-dc5f-4309-a0a3-313ab8bfb459" alt="Delete Confirm">
+      <h3>6. Delete</h3>
+      <img src="https://github.com/user-attachments/assets/0c4e428a-2e66-48e7-a98a-c11b3d66b27e" alt="Delete Code">
+      <img src="https://github.com/user-attachments/assets/d01d8798-dc5f-4309-a0a3-313ab8bfb459" alt="Delete Confirm">
 
-    <h2>Background Music</h2>
-    <audio id="bg-music" loop>
-      <source src="solo_leveling.mp3" type="audio/mp3">
-      Your browser does not support the audio element.
-    </audio>
-    <button class="system-btn" id="toggle-audio">🔇 Mute</button>
+      <h2>Background Music</h2>
+      <audio id="bg-music" loop>
+        <source src="259f5118-7175-4ded-a7c0-74812b7043bf.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <button id="toggle-audio">🔇 Mute</button>
 
-    <div class="button-row">
-      <a href="https://greidengueco.github.io/EDM-Portfolio/" class="system-btn">BACK TO PORTFOLIO</a>
-      <a href="https://github.com/Greidengueco/Finals-Lab-Task-6" class="system-btn" target="_blank">VIEW ON GITHUB</a>
+      <div class="button-row">
+        <a href="https://greidengueco.github.io/EDM-Portfolio/" class="system-btn">BACK TO PORTFOLIO</a>
+        <a href="https://github.com/Greidengueco/Finals-Lab-Task-6" class="system-btn" target="_blank">VIEW ON GITHUB</a>
+      </div>
     </div>
   </div>
 
@@ -186,13 +221,8 @@
     audio.play();
 
     toggleBtn.addEventListener('click', () => {
-      if (audio.muted) {
-        audio.muted = false;
-        toggleBtn.textContent = '🔇 Mute';
-      } else {
-        audio.muted = true;
-        toggleBtn.textContent = '🔊 Unmute';
-      }
+      audio.muted = !audio.muted;
+      toggleBtn.textContent = audio.muted ? '🔊 Unmute' : '🔇 Mute';
     });
   </script>
 </body>
