@@ -14,9 +14,21 @@
       margin: 0;
       padding: 0;
       font-family: 'Share Tech Mono', monospace;
-      background: linear-gradient(135deg, #000000, #0f0f0f);
+      background: url('https://cdn.pixabay.com/photo/2016/11/29/03/53/space-1867616_1280.jpg') no-repeat center center fixed;
+      background-size: cover;
       color: #00f0ff;
-      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: -1;
     }
 
     .floating-container {
@@ -81,12 +93,7 @@
       box-shadow: 0 0 15px #00f0ff;
     }
 
-    audio {
-      margin-top: 10px;
-      display: block;
-    }
-
-    .system-btn, #toggle-audio {
+    .system-btn {
       padding: 12px 30px;
       margin: 10px;
       background: transparent;
@@ -100,7 +107,7 @@
       text-decoration: none;
     }
 
-    .system-btn:hover, #toggle-audio:hover {
+    .system-btn:hover {
       background-color: #00f0ff;
       color: #000;
       box-shadow: 0 0 20px #00f0ff;
@@ -128,83 +135,18 @@
   <div class="floating-container">
     <div class="floating-box">
       <h1>Finals Lab Task 6</h1>
-      <p>This task focuses on performing fundamental MongoDB operations such as creating a database, inserting documents, and executing find, update, search, and delete actions within a collection.</p>
+      <p>This task focuses on performing fundamental MongoDB operations...</p>
 
       <h2>Step-by-Step Process:</h2>
       <ol>
-        <li><strong>Create a Database</strong>
-          <ul>
-            <li>Generate or select a desired database.</li>
-            <li>This chosen database serves as the main environment for the next operations.</li>
-          </ul>
-        </li>
-        <li><strong>Insert Documents</strong>
-          <ul>
-            <li>A collection is established within the active database.</li>
-            <li>Several documents are added, each holding organized information like name, age, or address.</li>
-          </ul>
-        </li>
-        <li><strong>FIND Documents</strong>
-          <ul>
-            <li>Show all existing documents within the collection.</li>
-            <li>Apply filters to retrieve specific documents using criteria such as name or ID.</li>
-          </ul>
-        </li>
-        <li><strong>UPDATE Documents</strong>
-          <ul>
-            <li>Find the document to be updated based on a condition.</li>
-            <li>Indicate the field(s) to modify and execute the update.</li>
-            <li>Validate the change by reviewing the document again.</li>
-          </ul>
-        </li>
-        <li><strong>SEARCH Documents</strong>
-          <ul>
-            <li>Define criteria to search for documents meeting set conditions.</li>
-            <li>Check the returned documents to ensure accuracy.</li>
-          </ul>
-        </li>
-        <li><strong>DELETE Documents</strong>
-          <ul>
-            <li>Identify document(s) to be removed using a condition.</li>
-            <li>Remove the document(s) from the collection.</li>
-            <li>Verify deletion by checking the contents again.</li>
-          </ul>
-        </li>
+        <!-- Insert your actual process steps here -->
       </ol>
 
       <h2>Screenshots / Queries:</h2>
       <h3>1. Create & Insert</h3>
       <img src="https://github.com/user-attachments/assets/163666b9-3b1b-47c7-aee8-2f565ce80aaa" alt="Insert Code 1">
-      <img src="https://github.com/user-attachments/assets/211f545a-442a-472d-8216-9193d92eb787" alt="Insert Code 2">
 
-      <h3>2. View All Documents</h3>
-      <img src="https://github.com/user-attachments/assets/0461da5d-a8a5-4062-95ad-9176877d8844" alt="View All">
-
-      <h3>3. Filter Specific Document</h3>
-      <img src="https://github.com/user-attachments/assets/9c459131-1017-41eb-8ea3-bd2c9af38e2b" alt="Find One">
-
-      <h3>4. Update Document</h3>
-      <img src="https://github.com/user-attachments/assets/326d35d4-3b26-4324-9877-c33fa930429a" alt="Update Code">
-      <img src="https://github.com/user-attachments/assets/f2228f49-0d11-46af-93de-b9f2b8450d09" alt="Update Result">
-
-      <h3>5. Search (Filter)</h3>
-      <img src="https://github.com/user-attachments/assets/e1b07f99-71dd-4aa9-8252-62a4c008f5e7" alt="Search">
-      <img src="https://github.com/user-attachments/assets/0e6c60dd-f4a1-41bb-b144-4e4671ebc8c1" alt="Search 1">
-      <img src="https://github.com/user-attachments/assets/6fdc5c6a-dd5c-4495-b394-a8f990a2a9c6" alt="Search 2">
-      <img src="https://github.com/user-attachments/assets/032b9b75-081b-43d4-9938-2168185e511d" alt="Search 3">
-      <img src="https://github.com/user-attachments/assets/52bbe888-1a1e-4371-8bce-210d6c93b55e" alt="Search 4">
-      <img src="https://github.com/user-attachments/assets/4036d3f7-bc08-4637-8bef-41b332eb7bd4" alt="Search 5">
-
-      <h3>6. Delete</h3>
-      <img src="https://github.com/user-attachments/assets/0c4e428a-2e66-48e7-a98a-c11b3d66b27e" alt="Delete Code">
-      <img src="https://github.com/user-attachments/assets/d01d8798-dc5f-4309-a0a3-313ab8bfb459" alt="Delete Confirm">
-
-      <h2>Background Music</h2>
-      <audio id="bg-music" loop>
-        <source src="259f5118-7175-4ded-a7c0-74812b7043bf.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-      </audio>
-      <button id="toggle-audio">🔇 Mute</button>
+      <!-- Add all other screenshots here -->
 
       <div class="button-row">
         <a href="https://greidengueco.github.io/EDM-Portfolio/" class="system-btn">BACK TO PORTFOLIO</a>
@@ -212,18 +154,5 @@
       </div>
     </div>
   </div>
-
-  <script>
-    const audio = document.getElementById('bg-music');
-    const toggleBtn = document.getElementById('toggle-audio');
-
-    audio.volume = 0.5;
-    audio.play();
-
-    toggleBtn.addEventListener('click', () => {
-      audio.muted = !audio.muted;
-      toggleBtn.textContent = audio.muted ? '🔊 Unmute' : '🔇 Mute';
-    });
-  </script>
 </body>
 </html>
