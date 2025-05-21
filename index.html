@@ -6,118 +6,78 @@
   <title>Finals Lab Task 6 - MongoDB Operations</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
-      padding: 0;
       font-family: 'Share Tech Mono', monospace;
-      background: url('https://cdn.pixabay.com/photo/2016/11/29/03/53/space-1867616_1280.jpg') no-repeat center center fixed;
-      background-size: cover;
+      background-color: #000;
       color: #00f0ff;
-      position: relative;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      z-index: -1;
-    }
-
-    .floating-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
       padding: 40px 20px;
     }
 
-    .floating-box {
-      max-width: 950px;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(16px);
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(0, 0, 0, 0.9);
       border: 2px solid #00f0ff;
-      box-shadow: 0 0 30px rgba(0, 240, 255, 0.4),
-                  0 0 60px rgba(0, 240, 255, 0.2) inset;
-      border-radius: 20px;
       padding: 40px;
-      margin: 30px 0;
-      animation: float 4s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      border-radius: 15px;
+      box-shadow: 0 0 50px rgba(0, 240, 255, 0.5);
     }
 
     h1 {
-      font-size: 3em;
       text-align: center;
+      font-size: 3em;
+      margin-bottom: 30px;
       color: #00f0ff;
-      margin-bottom: 20px;
-      text-shadow: 0 0 5px #00f0ff;
+      border-bottom: 2px solid #00f0ff;
+      padding-bottom: 10px;
     }
 
     h2, h3 {
+      margin-top: 25px;
       color: #ff3c57;
-      margin-top: 30px;
-      text-shadow: 0 0 3px #ff3c57;
     }
 
     p, li {
       font-size: 1.1em;
-      line-height: 1.6em;
     }
 
     ul {
-      margin-left: 25px;
-    }
-
-    ol {
-      padding-left: 20px;
+      margin-left: 20px;
+      margin-top: 10px;
     }
 
     img {
       width: 100%;
       max-width: 800px;
-      margin: 20px 0;
       border-radius: 10px;
+      margin: 20px 0;
       box-shadow: 0 0 15px #00f0ff;
-    }
-
-    .system-btn {
-      padding: 12px 30px;
-      margin: 10px;
-      background: transparent;
-      border: 2px solid #00f0ff;
-      color: #00f0ff;
-      font-size: 1.1rem;
-      font-family: inherit;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s ease;
-      text-decoration: none;
-    }
-
-    .system-btn:hover {
-      background-color: #00f0ff;
-      color: #000;
-      box-shadow: 0 0 20px #00f0ff;
     }
 
     .button-row {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
+      gap: 20px;
       margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .system-btn {
+      padding: 12px 30px;
+      background: transparent;
+      border: 2px solid #00f0ff;
+      color: #00f0ff;
+      font-size: 1.2rem;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .system-btn:hover {
+      background-color: #00f0ff;
+      color: black;
     }
 
     @media (max-width: 600px) {
@@ -125,33 +85,89 @@
         font-size: 2em;
       }
 
-      .floating-box {
+      .container {
         padding: 20px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="floating-container">
-    <div class="floating-box">
-      <h1>Finals Lab Task 6</h1>
-      <p>This task focuses on performing fundamental MongoDB operations...</p>
+  <div class="container">
+    <h1>Finals Lab Task 6</h1>
 
-      <h2>Step-by-Step Process:</h2>
-      <ol>
-        <!-- Insert your actual process steps here -->
-      </ol>
+    <p>This task focuses on performing fundamental MongoDB operations such as creating a database, inserting documents, and executing find, update, search, and delete actions within a collection.</p>
 
-      <h2>Screenshots / Queries:</h2>
-      <h3>1. Create & Insert</h3>
-      <img src="https://github.com/user-attachments/assets/163666b9-3b1b-47c7-aee8-2f565ce80aaa" alt="Insert Code 1">
+    <h2>Step-by-Step Process:</h2>
+    <ol>
+      <li><strong>Create a Database:</strong>
+        <ul>
+          <li>Generate or select a desired MongoDB database to serve as the environment.</li>
+        </ul>
+      </li>
 
-      <!-- Add all other screenshots here -->
+      <li><strong>Insert Documents:</strong>
+        <ul>
+          <li>Create a collection within the database.</li>
+          <li>Add multiple documents containing fields like name, age, or address.</li>
+        </ul>
+      </li>
 
-      <div class="button-row">
-        <a href="https://greidengueco.github.io/EDM-Portfolio/" class="system-btn">BACK TO PORTFOLIO</a>
-        <a href="https://github.com/Greidengueco/Finals-Lab-Task-6" class="system-btn" target="_blank">VIEW ON GITHUB</a>
-      </div>
+      <li><strong>Find Documents:</strong>
+        <ul>
+          <li>Retrieve all documents from the collection.</li>
+          <li>Apply filters to find specific documents by name or ID.</li>
+        </ul>
+      </li>
+
+      <li><strong>Update Documents:</strong>
+        <ul>
+          <li>Locate documents using conditions (e.g., name).</li>
+          <li>Modify field values and confirm the update.</li>
+        </ul>
+      </li>
+
+      <li><strong>Search Documents:</strong>
+        <ul>
+          <li>Query documents using criteria like age or specific text values.</li>
+        </ul>
+      </li>
+
+      <li><strong>Delete Documents:</strong>
+        <ul>
+          <li>Identify documents to remove and delete them from the collection.</li>
+          <li>Verify deletion by listing remaining documents.</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h2>Screenshots of Queries and Outputs:</h2>
+
+    <h3>1. Create Database & Insert Documents</h3>
+    <img src="https://github.com/user-attachments/assets/163666b9-3b1b-47c7-aee8-2f565ce80aaa" alt="Create DB">
+    <img src="https://github.com/user-attachments/assets/211f545a-442a-472d-8216-9193d92eb787" alt="Insert Documents">
+
+    <h3>2. Find Documents</h3>
+    <img src="https://github.com/user-attachments/assets/0461da5d-a8a5-4062-95ad-9176877d8844" alt="Find">
+
+    <h3>3. Update Documents</h3>
+    <img src="https://github.com/user-attachments/assets/9c459131-1017-41eb-8ea3-bd2c9af38e2b" alt="Update 1">
+    <img src="https://github.com/user-attachments/assets/f2228f49-0d11-46af-93de-b9f2b8450d09" alt="Update 2">
+
+    <h3>4. Search Documents</h3>
+    <img src="https://github.com/user-attachments/assets/e1b07f99-71dd-4aa9-8252-62a4c008f5e7" alt="Search 1">
+    <img src="https://github.com/user-attachments/assets/0e6c60dd-f4a1-41bb-b144-4e4671ebc8c1" alt="Search 2">
+    <img src="https://github.com/user-attachments/assets/6fdc5c6a-dd5c-4495-b394-a8f990a2a9c6" alt="Search 3">
+    <img src="https://github.com/user-attachments/assets/032b9b75-081b-43d4-9938-2168185e511d" alt="Search 4">
+    <img src="https://github.com/user-attachments/assets/52bbe888-1a1e-4371-8bce-210d6c93b55e" alt="Search 5">
+    <img src="https://github.com/user-attachments/assets/4036d3f7-bc08-4637-8bef-41b332eb7bd4" alt="Search 6">
+
+    <h3>5. Delete Documents</h3>
+    <img src="https://github.com/user-attachments/assets/0c4e428a-2e66-48e7-a98a-c11b3d66b27e" alt="Delete 1">
+    <img src="https://github.com/user-attachments/assets/d01d8798-dc5f-4309-a0a3-313ab8bfb459" alt="Delete 2">
+
+    <div class="button-row">
+      <a href="https://greidengueco.github.io/EDM-Portfolio/" class="system-btn">BACK TO PORTFOLIO</a>
+      <a href="https://github.com/Greidengueco/Finals-Lab-Task-6" class="system-btn" target="_blank">VIEW ON GITHUB</a>
     </div>
   </div>
 </body>
